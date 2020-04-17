@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.scss';
 
@@ -13,7 +13,7 @@ import Profile from './components/profile/Profile';
 
 const App = ({ session, refetch }) => {
     return (
-        <div className="uk-container">
+        <Fragment>
             <Navbar session={session} />
             <Route exact path="/" component={Home} />
             <Switch>
@@ -23,7 +23,7 @@ const App = ({ session, refetch }) => {
                 <Route path='/search' component={Search} />
                 <Route path='/profile' component={Profile} />
             </Switch>
-        </div>
+        </Fragment>
     );
 }
 

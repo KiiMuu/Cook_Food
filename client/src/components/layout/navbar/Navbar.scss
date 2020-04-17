@@ -1,6 +1,7 @@
 @import '../../../helpers/Vars.scss';
 
 .navbar {
+    background-color: $mainColor;
     .uk-navbar-left {
         a {
             color: $mainLight;

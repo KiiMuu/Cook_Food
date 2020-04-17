@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import SignOut from '../../auth/SignOut';
 
 import './Navbar.scss';
 
 const Navbar = ({ session }) => {
     return (
         <div data-uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-            <div className="navbar" style={(window.location.pathname === '/' || window.location.pathname === '/signup' || window.location.pathname === '/signin') ? {background: '#000'} : {background: '#35A7FF'}}>
+            <div className="navbar">
                 <div className="navbar-content">
                     <nav className="uk-navbar-container uk-navbar-transparent uk-container" data-uk-navbar>
                         <div className="uk-navbar-left">
@@ -42,7 +43,7 @@ const NavAuth = ({ session }) => (
                 <NavLink to="/profile">Profile</NavLink>
             </li>
             <li>
-                <NavLink to="#!">Sign Out</NavLink>
+                <SignOut />
             </li>
         </ul>
         {/* Show Nav items in sidebar in phone screens */}
@@ -66,7 +67,7 @@ const NavAuth = ({ session }) => (
                             <NavLink to="/profile">Profile</NavLink>
                         </li>
                         <li>
-                            <NavLink to="#!">Sign Out</NavLink>
+                            <SignOut />
                         </li>
                     </ul>
                 </div>
