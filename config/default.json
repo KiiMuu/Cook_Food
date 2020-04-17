@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb://localhost/cookfood",
+    "secret": "123321f^s"
+}
