@@ -24,7 +24,6 @@ const SignUp = (props) => {
     });
 
     const handleSubmit = (e, signUpUser) => {
-        // let history = useHistory();
         e.preventDefault();
 
         signUpUser().then(async ({ data }) => {

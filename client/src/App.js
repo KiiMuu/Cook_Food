@@ -8,6 +8,7 @@ import Home from './components/home/Home';
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
 import AddRecipe from './components/recipes/add-recipe/AddRecipe';
+import RecipePage from './components/recipes/RecipePage';
 import Search from './components/recipes/search/Search';
 import Profile from './components/profile/Profile';
 
@@ -19,7 +20,8 @@ const App = ({ session, refetch }) => {
             <Switch>
                 <Route path='/signin' render={() => <SignIn refetch={refetch} />} />
                 <Route path='/signup' render={() => <SignUp refetch={refetch} />} />
-                <Route path='/recipe/add' component={AddRecipe} />
+                <Route path='/recipe/add' render={() => <AddRecipe session={session} />} />
+                <Route path='/recipes/:_id' component={RecipePage} />
                 <Route path='/search' component={Search} />
                 <Route path='/profile' component={Profile} />
             </Switch>
