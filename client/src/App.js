@@ -23,7 +23,7 @@ const App = ({ session, refetch }) => {
                 <Route path='/recipe/add' render={() => <AddRecipe session={session} />} />
                 <Route path='/recipes/:_id' component={RecipePage} />
                 <Route path='/search' component={Search} />
-                <Route path='/profile' component={Profile} />
+                <Route path='/profile' render={() => <Profile session={session} />} />
             </Switch>
         </Fragment>
     );

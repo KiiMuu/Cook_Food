@@ -1,11 +1,14 @@
 import React from 'react';
 
 import './Profile.scss';
+import UserInfo from './UserInfo';
+import UserRecipes from './UserRecipes';
 
-const Profile = () => {
+const Profile = ({ session }) => {
     return (
         <div>
-            Profile
+            <UserInfo session={session} />
+            <UserRecipes username={session.getCurrentUser.username} />
         </div>
     )
 }
