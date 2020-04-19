@@ -42,6 +42,8 @@ exports.typeDefs = gql`
             username: String
         ): Recipe
 
+        deleteUserRecipe(_id: ID): Recipe
+
         signinuser(
             username: String!
             password: String!
