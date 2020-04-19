@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import './AddRecipe.scss';
 
 import { Mutation } from 'react-apollo';
-import { ADD_RECIPE, GET_ALL_RECIPES } from '../../../queries/index';
+import { ADD_RECIPE, GET_ALL_RECIPES, GET_USER_RECIPES } from '../../../queries/index';
 import Error from '../../error/Error';
 import withAuth from '../../../middleware/withAuth';
 
@@ -82,6 +82,14 @@ const AddRecipe = ({ session }) => {
         <Mutation 
             mutation={ADD_RECIPE} 
             variables={{ name, category, description, instructions, username }}
+            refetchQueries={() => [
+                {
+                    query: GET_USER_RECIPES,
+                    variables: {
+                        username
+                    }
+                }
+            ]}
             update={updateCache}
         >
             {(addRecipe, { data, loading, error }) => {
