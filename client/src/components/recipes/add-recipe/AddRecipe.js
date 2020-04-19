@@ -6,6 +6,7 @@ import './AddRecipe.scss';
 import { Mutation } from 'react-apollo';
 import { ADD_RECIPE, GET_ALL_RECIPES } from '../../../queries/index';
 import Error from '../../error/Error';
+import withAuth from '../../../middleware/withAuth';
 
 const AddRecipe = ({ session }) => {
 
@@ -123,4 +124,5 @@ const AddRecipe = ({ session }) => {
     )
 }
 
-export default AddRecipe;
+export default withAuth(session => session && session.getCurrentUser)(AddRecipe);
+
