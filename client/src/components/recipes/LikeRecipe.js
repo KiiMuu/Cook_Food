@@ -1,21 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 
+import { Mutation } from 'react-apollo';
 import withSession from '../session/withSession';
+import { LIKE_RECIPE } from '../../queries/index';
 
-const LikeRecipe = (props) => {
+class LikeRecipe extends Component {
 
-    const [username, setUsername] = useState('');
+    state = {
+        username: ''
+    }
 
-    useEffect(() => {
-        if (props.session.getCurrentUser) {
-            const { username } = props.session.getCurrentUser;
-            setUsername({
+    componentDidMount() {
+        if (this.props.session.getCurrentUser) {
+            const { username } = this.props.session.getCurrentUser;
+            this.setState({
                 username
-            });
+            }); 
         }
-    }, []);
+    }
 
-    return (username && <button>Like</button>);
+    handleLike = (likeRecipe) => {
+        likeRecipe().then(({ data }) => {
+            console.log(data);
+        });
+    }
+
+    render() {
+        const { username } = this.state;
+        const { _id } = this.props;
+        return (
+            <Mutation mutation={LIKE_RECIPE} variables={{ _id, username }}>
+                {likeRecipe => (
+                    (username && <button onClick={() => this.handleLike(likeRecipe)}>Like</button>)
+                )}
+            </Mutation>
+        )
+    }
 }
 
 export default withSession(LikeRecipe);

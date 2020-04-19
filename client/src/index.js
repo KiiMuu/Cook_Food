@@ -24,8 +24,9 @@ const client = new ApolloClient({
             }
         });
     },
-    onError: ({ networkError }) => {
+    onError: ({ networkError, graphQLErrors }) => {
         if (networkError) {
+            console.log('graphQLErrors', graphQLErrors);
             console.log('Network Error', networkError);
         }
     }
