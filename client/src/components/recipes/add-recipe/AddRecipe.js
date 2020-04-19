@@ -44,7 +44,7 @@ const AddRecipe = ({ session }) => {
         e.preventDefault();
 
         addRecipe().then(({ data }) => {
-            console.log(data);
+            // console.log(data);
             setAddRecipe({
                 name: '',
                 category: 'Breakfast',

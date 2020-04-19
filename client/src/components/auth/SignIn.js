@@ -26,7 +26,7 @@ const SignIn = (props) => {
         e.preventDefault();
 
         signInUser().then(async ({ data }) => {
-            console.log(data);
+            // console.log(data);
             localStorage.setItem('token', data.signinuser.token);
             await props.refetch();
             setSignIn({

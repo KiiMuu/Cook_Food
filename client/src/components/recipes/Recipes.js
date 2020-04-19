@@ -14,7 +14,7 @@ const Recipes = () => {
                 {({ data, loading, error }) => {
                     if (loading) return <div>Loading...</div>
                     if (error) return <div>Error</div>
-                    console.log(data);
+                    // console.log(data);
                     return (
                         <ul>
                             {data.getAllRecipes.map(recipe => (
