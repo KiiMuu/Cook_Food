@@ -32,4 +32,9 @@ const recipeSchema = new Schema({
     }
 });
 
+// perform SEARCH on recipes
+recipeSchema.index({
+    "$**": "text"
+});
+
 module.exports = mongoose.model('Recipe', recipeSchema);
