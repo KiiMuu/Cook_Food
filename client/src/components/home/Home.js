@@ -1,16 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './Home.scss';
 
 // home components
-import Header from '../layout/header/Header';
 import Recipes from '../../components/recipes/Recipes';
 
 const Home = () => {
     return (
-        <Fragment>
-            <Header />
+        <div className="uk-container uk-margin-medium-top">
             <Recipes />
-        </Fragment>
+        </div>
     )
 }
 

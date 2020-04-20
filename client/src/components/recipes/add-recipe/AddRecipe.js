@@ -80,63 +80,84 @@ const AddRecipe = ({ session }) => {
     }
 
     return (
-        <Mutation 
-            mutation={ADD_RECIPE} 
-            variables={{ name, imageUrl, category, description, instructions, username }}
-            refetchQueries={() => [
-                {
-                    query: GET_USER_RECIPES,
-                    variables: {
-                        username
-                    }
-                }
-            ]}
-            update={updateCache}
-        >
-            {(addRecipe, { data, loading, error }) => {
-                return (
-                    <div className="add-recipe">
-                        <form onSubmit={(e) => handleSubmit(e, addRecipe)}>
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Recipe Name"
-                                onChange={handleChange}
-                                value={name}
-                            />
-                            <input
-                                type="text"
-                                name="imageUrl" 
-                                placeholder="Recipe Image"
-                                onChange={handleChange}
-                                value={imageUrl}
-                            />
-                            <select name="category" onChange={handleChange} value={category}>
-                                <option value="Breakfast" >Breakfast</option>
-                                <option value="Lunch">Lunch</option>
-                                <option value="Dinner">Dinner</option>
-                                <option value="Snack">Snack</option>
-                            </select>
-                            <input
-                                type="text"
-                                name="description"
-                                placeholder="Recipe Description"
-                                onChange={handleChange}
-                                value={description}
-                            />
-                            <textarea 
-                                name="instructions"
-                                placeholder="Add Instructions"
-                                onChange={handleChange}
-                                value={instructions}
-                            ></textarea>
-                            <button disabled={ loading || validateRecipe() } type="submit">Add</button>
-                            { error && <Error error={error} /> }
-                        </form>
-                    </div>
-                )
-            }}
-        </Mutation>
+        <div className="uk-margin-medium-top">
+            <div className="uk-container">
+                <Mutation 
+                    mutation={ADD_RECIPE} 
+                    variables={{ name, imageUrl, category, description, instructions, username }}
+                    refetchQueries={() => [
+                        {
+                            query: GET_USER_RECIPES,
+                            variables: {
+                                username
+                            }
+                        }
+                    ]}
+                    update={updateCache}
+                >
+                    {(addRecipe, { data, loading, error }) => {
+                        return (
+                            <form className="uk-grid-small" data-uk-grid onSubmit={(e) => handleSubmit(e, addRecipe)}>
+                                <div class="uk-width-1-2@s">
+                                    <input
+                                        className="uk-input"
+                                        type="text"
+                                        name="name"
+                                        placeholder="Recipe Name"
+                                        onChange={handleChange}
+                                        value={name}
+                                    />
+                                </div>
+                                <div class="uk-width-1-2@s">
+                                    <input
+                                        className="uk-input"
+                                        type="text"
+                                        name="imageUrl" 
+                                        placeholder="Recipe image source"
+                                        onChange={handleChange}
+                                        value={imageUrl}
+                                    />
+                                </div>
+                                <div class="uk-width-1-2@s">
+                                    <div className="uk-form-controls" name="category" onChange={handleChange} value={category}>
+                                        <select className="uk-select">
+                                            <option value="Breakfast" >Breakfast</option>
+                                            <option value="Lunch">Lunch</option>
+                                            <option value="Dinner">Dinner</option>
+                                            <option value="Snack">Snack</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-2@s">
+                                    <input
+                                        className="uk-input"
+                                        type="text"
+                                        name="description"
+                                        placeholder="Recipe Description"
+                                        onChange={handleChange}
+                                        value={description}
+                                    />
+                                </div>
+                                <div class="uk-width-1-1@s">
+                                    <textarea 
+                                        className="uk-textarea"
+                                        rows="5"
+                                        name="instructions"
+                                        placeholder="Add Instructions"
+                                        onChange={handleChange}
+                                        value={instructions}
+                                    ></textarea>
+                                </div>
+                                <div class="uk-width-1-1@s">
+                                    <button disabled={ loading || validateRecipe() } type="submit" className="uk-button uk-button-primary">Add</button>
+                                </div>
+                                { error && <Error error={error} /> }
+                            </form>
+                        )
+                    }}
+                </Mutation>
+            </div>
+        </div>
     )
 }
 

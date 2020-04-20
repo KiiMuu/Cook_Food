@@ -44,40 +44,44 @@ const SignIn = (props) => {
     }
 
     return (
-        <div className="sign-in">
-            <Mutation mutation={SIGNIN_USER} variables={{ username, password }}>
-                {(signInUser, { data, loading, error }) => {
-                    return (
-                        <form className="uk-grid-small" data-uk-grid onSubmit={e => handleSubmit(e, signInUser)}>
-                            <div className="uk-width-1-2@s">
-                                <input 
-                                    className={ error ? 'uk-form-danger' : '' }
-                                    type="text" 
-                                    name="username" 
-                                    placeholder="Username"
-                                    value={username}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="uk-width-1-2@s">
-                                <input
-                                    className={ error ? 'uk-form-danger' : '' }
-                                    type="password" 
-                                    name="password" 
-                                    placeholder="Password"
-                                    value={password}
-                                    onChange={handleChange}
-                                />
-                                { error && <Error error={error} /> }
-                            </div>
-                            <div className="uk-width-1-2@s uk-text-left">
-                                <button type="submit">Sign in</button>
-                                {/* <button type="submit" disabled={loading || validateForm()}>Sign up</button> */}
-                            </div>
-                        </form>
-                    );
-                }}
-            </Mutation>
+        <div className="sign-in uk-margin-medium-top">
+            <div className="uk-container uk-container-small">
+                <h2 className="uk-text-uppercase uk-text-center">Sign In</h2>
+                <Mutation mutation={SIGNIN_USER} variables={{ username, password }}>
+                    {(signInUser, { data, loading, error }) => {
+                        return (
+                            <form className="uk-grid-small" data-uk-grid onSubmit={e => handleSubmit(e, signInUser)}>
+                                <div className="uk-width-1-2@s">
+                                    <input 
+                                        className="uk-input"
+                                        type="text" 
+                                        name="username" 
+                                        placeholder="Username"
+                                        value={username}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="uk-width-1-2@s">
+                                    <input
+                                        className="uk-input"
+                                        type="password" 
+                                        name="password" 
+                                        placeholder="Password"
+                                        value={password}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="uk-width-1-2@s uk-text-left">
+                                    <button type="submit" disabled={loading || validateForm()} className="uk-button uk-button-primary">Sign up</button>
+                                </div>
+                                <div className="uk-width-1-2@s uk-text-left">
+                                    { error && <Error error={error} /> }
+                                </div>
+                            </form>
+                        );
+                    }}
+                </Mutation>
+            </div>
         </div>
     )
 }

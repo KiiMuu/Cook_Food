@@ -1,6 +1,7 @@
 import React from 'react';
 
 import RecipeItem from './RecipeItem';
+import Spinner from '../spinner/Spinner';
 import './Recipes.scss';
 
 import { Query } from 'react-apollo';
@@ -12,15 +13,15 @@ const Recipes = () => {
         <div className="recipes">
             <Query query={GET_ALL_RECIPES}>
                 {({ data, loading, error }) => {
-                    if (loading) return <div>Loading...</div>
+                    if (loading) return <Spinner />
                     if (error) return <div>Error</div>
-                    console.log(data);
+                    // console.log(data);
                     return (
-                        <ul>
+                        <div data-uk-grid>
                             {data.getAllRecipes.map(recipe => (
                                 <RecipeItem key={recipe._id} {...recipe} />
                             ))}
-                        </ul>
+                        </div>
                     );
                 }}
             </Query>

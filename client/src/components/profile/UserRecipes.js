@@ -21,12 +21,12 @@ const UserRecipes = ({ username }) => (
             if (error) return <div>Error</div>
             // console.log(data);
             return (
-                <ul>
+                <ul className="uk-list">
                     <h3>Your Recipes</h3>
                     {!data.getUserRecipes.length && <p>You have't any recipes yet.</p>}
                     {data.getUserRecipes.map(recipe => (
                         <li key={recipe._id}>
-                            <Link to={`/recipes/${recipe._id}`}><p>{recipe.name}</p></Link>
+                            <Link to={`/recipes/${recipe._id}`} className="uk-link-heading"><p>Name: {recipe.name}</p></Link>
                             <p>Likes: {recipe.likes}</p>
                             <Mutation 
                                 mutation={DELETE_USER_RECIPE} 
@@ -56,7 +56,7 @@ const UserRecipes = ({ username }) => (
                             >
                                 {(deleteUserRecipe, attrs = {}) => (
                                     <div>
-                                        {attrs.loading ? 'deleting...' : <button onClick={() => handleDelete(deleteUserRecipe)}>Delete</button>}
+                                        {attrs.loading ? 'deleting...' : <button onClick={() => handleDelete(deleteUserRecipe)} className="uk-button uk-button-danger uk-button-small">Delete</button>}
                                     </div>
                                 )}
                             </Mutation>

@@ -7,9 +7,15 @@ import withAuth from '../../middleware/withAuth';
 
 const Profile = ({ session }) => {
     return (
-        <div>
-            <UserInfo session={session} />
-            <UserRecipes username={session.getCurrentUser.username} />
+        <div className="uk-container uk-margin-medium-top">
+            <div className="uk-child-width-1-2@m" data-uk-grid>
+                <div>
+                    <UserInfo session={session} />
+                </div>
+                <div>
+                    <UserRecipes username={session.getCurrentUser.username} />
+                </div>
+            </div>
         </div>
     )
 }
