@@ -14,13 +14,14 @@ const AddRecipe = ({ session }) => {
 
     const [addRecipe, setAddRecipe] = useState({
         name: '',
+        imageUrl: '',
         category: 'Breakfast',
         description: '',
         instructions: '',
         username: ''
     });
 
-    const { name, category, description, instructions, username } = addRecipe;
+    const { name, imageUrl, category, description, instructions, username } = addRecipe;
 
     const handleChange = e => setAddRecipe({
         ...addRecipe,
@@ -57,7 +58,7 @@ const AddRecipe = ({ session }) => {
     }
 
     const validateRecipe = () => {
-        const isInvalid = !name || !category || !description || !instructions;
+        const isInvalid = !name || !imageUrl || !category || !description || !instructions;
 
         return isInvalid;
     }
@@ -81,7 +82,7 @@ const AddRecipe = ({ session }) => {
     return (
         <Mutation 
             mutation={ADD_RECIPE} 
-            variables={{ name, category, description, instructions, username }}
+            variables={{ name, imageUrl, category, description, instructions, username }}
             refetchQueries={() => [
                 {
                     query: GET_USER_RECIPES,
@@ -102,6 +103,13 @@ const AddRecipe = ({ session }) => {
                                 placeholder="Recipe Name"
                                 onChange={handleChange}
                                 value={name}
+                            />
+                            <input
+                                type="text"
+                                name="imageUrl" 
+                                placeholder="Recipe Image"
+                                onChange={handleChange}
+                                value={imageUrl}
                             />
                             <select name="category" onChange={handleChange} value={category}>
                                 <option value="Breakfast" >Breakfast</option>

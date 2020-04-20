@@ -7,6 +7,7 @@ export const GET_ALL_RECIPES = gql`
     query {
         getAllRecipes {
             _id
+            imageUrl
             name
             category
         }
@@ -35,14 +36,16 @@ export const SEARCH_RECIPES = gql`
 // Recipes Mutations
 export const ADD_RECIPE = gql`
     mutation(
-        $name: String!, 
+        $name: String!,
+        $imageUrl: String!,
         $description: String!, 
         $category: String!, 
         $instructions: String!, 
         $username: String
     ) {
         addRecipe(
-            name: $name, 
+            name: $name,
+            imageUrl: $imageUrl, 
             description: $description, 
             category: $category, 
             instructions: $instructions, 

@@ -4,6 +4,7 @@ exports.typeDefs = gql`
     type Recipe {
         _id: ID
         name: String!
+        imageUrl: String
         category: String!
         description: String!
         instructions: String!
@@ -36,6 +37,7 @@ exports.typeDefs = gql`
     type Mutation {
         addRecipe(
             name: String!, 
+            imageUrl: String!,
             description: String!, 
             category: String!, 
             instructions: String!, 

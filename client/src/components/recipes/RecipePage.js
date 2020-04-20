@@ -17,6 +17,7 @@ const RecipePage = ({ match }) => {
                     // console.log(data);
                     return (
                         <div className="recipe">
+                            <img src={`${data.getRecipe.imageUrl}`} alt={data.getRecipe.category} />
                             <h2>{data.getRecipe.name}</h2>
                             <p>Category: {data.getRecipe.category}</p>
                             <p>Description: {data.getRecipe.description}</p>
